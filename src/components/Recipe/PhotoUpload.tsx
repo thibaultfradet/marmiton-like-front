@@ -4,8 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Label } from '@/components/ui/label';
 import { cn } from '@/lib/utils';
-
-const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8000';
+import API_URL from '@/utils/apiUrl';
 
 interface PhotoUploadProps {
   currentPhotoUrl?: string | null;
@@ -48,7 +47,7 @@ export default function PhotoUpload({
         className={cn(
           'relative flex items-center justify-center rounded-xl border-2 border-dashed transition-colors overflow-hidden',
           deleteChecked ? 'cursor-not-allowed opacity-50 border-border' : 'cursor-pointer border-border hover:border-primary',
-          displayUrl ? 'aspect-[16/9]' : 'aspect-[16/7]',
+          displayUrl ? 'aspect-video' : 'aspect-16/7',
         )}
       >
         {displayUrl && !deleteChecked ? (

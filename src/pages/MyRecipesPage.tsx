@@ -5,8 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import type { Recipe } from '@/types/custom/recipe';
 import { getMyRecipes } from '@/services/recipeApi';
-
-const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8000';
+import API_URL from '@/utils/apiUrl';
 
 export default function MyRecipesPage() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);

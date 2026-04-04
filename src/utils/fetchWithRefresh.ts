@@ -1,4 +1,6 @@
-const BASE_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8000';
+import API_URL from './apiUrl';
+
+const BASE_URL = API_URL;
 
 async function fetchWithRefresh(input: string, init?: RequestInit): Promise<Response> {
   const response = await fetch(BASE_URL + input, {

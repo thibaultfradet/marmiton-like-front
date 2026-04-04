@@ -5,8 +5,7 @@ import { toast } from 'sonner';
 import StarRating from './StarRating';
 import type { Recipe } from '@/types/custom/recipe';
 import { toggleFavorite } from '@/services/recipeApi';
-
-const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8000';
+import API_URL from '@/utils/apiUrl';
 
 interface RecipeCardProps {
   recipe: Recipe;
