@@ -55,7 +55,7 @@ export default function HomePage() {
       {/* Header */}
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight">Recettes</h1>
+          <h1 className="text-3xl font-bold tracking-tight">Recettes</h1>
           <p className="text-sm text-muted-foreground mt-0.5">
             {loading ? '…' : `${filtered.length} recette${filtered.length !== 1 ? 's' : ''}`}
           </p>

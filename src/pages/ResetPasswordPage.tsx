@@ -69,14 +69,14 @@ export default function ResetPasswordPage() {
             <ChefHat className="h-6 w-6" />
           </div>
           <div className="text-center">
-            <h1 className="text-2xl font-bold tracking-tight">Marmiton</h1>
+            <h1 className="text-3xl font-bold tracking-tight">Marmiton</h1>
             <p className="text-sm text-muted-foreground mt-0.5">Vos recettes, votre cuisine</p>
           </div>
         </div>
 
         <Card className="shadow-lg border-border/60">
           <CardHeader className="space-y-1 pb-4">
-            <CardTitle className="text-xl">Nouveau mot de passe</CardTitle>
+            <CardTitle className="text-2xl">Nouveau mot de passe</CardTitle>
             <CardDescription>Choisissez un mot de passe d'au moins 8 caractères.</CardDescription>
           </CardHeader>
           <CardContent>

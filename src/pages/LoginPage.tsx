@@ -41,7 +41,7 @@ export default function LoginPage() {
             <ChefHat className="h-6 w-6" />
           </div>
           <div className="text-center">
-            <h1 className="text-2xl font-bold tracking-tight">Marmiton</h1>
+            <h1 className="text-3xl font-bold tracking-tight">Marmiton</h1>
             <p className="text-sm text-muted-foreground mt-0.5">
               Vos recettes, votre cuisine
             </p>
@@ -51,7 +51,7 @@ export default function LoginPage() {
         {/* Card */}
         <Card className="shadow-lg border-border/60">
           <CardHeader className="space-y-1 pb-4">
-            <CardTitle className="text-xl">Connexion</CardTitle>
+            <CardTitle className="text-2xl">Connexion</CardTitle>
             <CardDescription>Entrez vos identifiants pour accéder à l'application.</CardDescription>
           </CardHeader>
           <CardContent>

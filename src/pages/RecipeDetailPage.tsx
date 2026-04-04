@@ -82,7 +82,7 @@ export default function RecipeDetailPage() {
   return (
     <div className="max-w-3xl mx-auto space-y-6">
       {/* Back */}
-      <Button variant="ghost" size="sm" onClick={() => navigate(-1)} className="gap-1.5 -ml-2 text-muted-foreground">
+      <Button variant="ghost" size="sm" onClick={() => navigate(-1)} className="gap-1.5 -ml-2 text-muted-foreground hover:text-foreground">
         <ChevronLeft className="h-4 w-4" />
         Retour
       </Button>
@@ -109,9 +109,9 @@ export default function RecipeDetailPage() {
               </span>
             ))}
           </div>
-          <h1 className="text-2xl font-bold tracking-tight">{recipe.label}</h1>
+          <h1 className="text-3xl font-bold tracking-tight">{recipe.label}</h1>
           {recipe.description && (
-            <p className="text-muted-foreground text-sm leading-relaxed">{recipe.description}</p>
+            <p className="text-muted-foreground text-base leading-relaxed">{recipe.description}</p>
           )}
         </div>
 
@@ -140,33 +140,33 @@ export default function RecipeDetailPage() {
       <div className="flex flex-wrap items-center gap-6 py-4 border-y border-border/60">
         {recipe.preparationTime && (
           <div className="text-center">
-            <p className="text-xs text-muted-foreground">Préparation</p>
-            <p className="font-semibold text-sm flex items-center gap-1 mt-0.5">
-              <Clock className="h-3.5 w-3.5 text-primary" />
+            <p className="text-sm text-muted-foreground">Préparation</p>
+            <p className="font-semibold text-base flex items-center gap-1 mt-0.5">
+              <Clock className="h-4 w-4 text-primary" />
               {recipe.preparationTime} min
             </p>
           </div>
         )}
         {recipe.cookingTime && (
           <div className="text-center">
-            <p className="text-xs text-muted-foreground">Cuisson</p>
-            <p className="font-semibold text-sm flex items-center gap-1 mt-0.5">
-              <Clock className="h-3.5 w-3.5 text-primary" />
+            <p className="text-sm text-muted-foreground">Cuisson</p>
+            <p className="font-semibold text-base flex items-center gap-1 mt-0.5">
+              <Clock className="h-4 w-4 text-primary" />
               {recipe.cookingTime} min
             </p>
           </div>
         )}
         {totalTime > 0 && (
           <div className="text-center">
-            <p className="text-xs text-muted-foreground">Total</p>
-            <p className="font-semibold text-sm mt-0.5">{totalTime} min</p>
+            <p className="text-sm text-muted-foreground">Total</p>
+            <p className="font-semibold text-base mt-0.5">{totalTime} min</p>
           </div>
         )}
         {recipe.quantity && (
           <div className="text-center">
-            <p className="text-xs text-muted-foreground">Personnes</p>
-            <p className="font-semibold text-sm flex items-center gap-1 mt-0.5">
-              <Users className="h-3.5 w-3.5 text-primary" />
+            <p className="text-sm text-muted-foreground">Personnes</p>
+            <p className="font-semibold text-base flex items-center gap-1 mt-0.5">
+              <Users className="h-4 w-4 text-primary" />
               {recipe.quantity}
             </p>
           </div>
@@ -174,7 +174,7 @@ export default function RecipeDetailPage() {
         <div className="ml-auto flex flex-col items-end gap-1">
           <StarRating value={recipe.userRating ?? null} onRate={handleRate} />
           {recipe.ratingCount > 0 && (
-            <p className="text-xs text-muted-foreground">
+            <p className="text-sm text-muted-foreground">
               {recipe.ratingAverage?.toFixed(1)} / 5 ({recipe.ratingCount} avis)
             </p>
           )}
@@ -185,16 +185,16 @@ export default function RecipeDetailPage() {
       <div className="grid sm:grid-cols-2 gap-6">
         <Card className="border-border/60">
           <CardContent className="p-5 space-y-3">
-            <h2 className="font-semibold">Ingrédients</h2>
-            <div className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
+            <h2 className="text-lg font-semibold">Ingrédients</h2>
+            <div className="text-base text-muted-foreground leading-relaxed whitespace-pre-line">
               {recipe.ingredients}
             </div>
           </CardContent>
         </Card>
         <Card className="border-border/60">
           <CardContent className="p-5 space-y-3">
-            <h2 className="font-semibold">Instructions</h2>
-            <div className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
+            <h2 className="text-lg font-semibold">Instructions</h2>
+            <div className="text-base text-muted-foreground leading-relaxed whitespace-pre-line">
               {recipe.instructions}
             </div>
           </CardContent>
@@ -203,7 +203,7 @@ export default function RecipeDetailPage() {
 
       {/* Author */}
       {recipe.author && (
-        <p className="text-xs text-muted-foreground text-right">
+        <p className="text-sm text-muted-foreground text-right">
           Recette par {recipe.author.firstName} {recipe.author.lastName}
         </p>
       )}

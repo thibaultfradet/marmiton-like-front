@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent } from '@/components/ui/card';
 import type { AdminUser } from '@/types/custom/user';
 import { getUsers, updateUser } from '@/services/adminApi';
 
@@ -68,16 +68,16 @@ export default function AdminEditUserPage() {
 
   return (
     <div className="max-w-lg mx-auto space-y-6">
-      <Button variant="ghost" size="sm" onClick={() => navigate(-1)} className="gap-1.5 -ml-2 text-muted-foreground">
-        <ChevronLeft className="h-4 w-4" />
-        Retour
-      </Button>
+      <div className="space-y-1">
+        <Button variant="ghost" size="sm" onClick={() => navigate(-1)} className="gap-1.5 -ml-2 text-muted-foreground hover:text-foreground">
+          <ChevronLeft className="h-4 w-4" />
+          Retour
+        </Button>
+        <h1 className="text-3xl font-bold tracking-tight">Modifier l'utilisateur</h1>
+      </div>
 
       <Card className="border-border/60">
-        <CardHeader>
-          <CardTitle>Modifier l'utilisateur</CardTitle>
-        </CardHeader>
-        <CardContent>
+        <CardContent className="pt-6">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-1.5">

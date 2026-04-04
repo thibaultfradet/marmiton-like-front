@@ -79,12 +79,12 @@ export default function EditRecipePage() {
 
   return (
     <div className="max-w-2xl mx-auto space-y-6">
-      <div className="flex items-center gap-3">
-        <Button variant="ghost" size="sm" onClick={() => navigate(-1)} className="gap-1.5 -ml-2 text-muted-foreground">
+      <div className="space-y-1">
+        <Button variant="ghost" size="sm" onClick={() => navigate(-1)} className="gap-1.5 -ml-2 text-muted-foreground hover:text-foreground">
           <ChevronLeft className="h-4 w-4" />
           Retour
         </Button>
-        <h1 className="text-2xl font-bold tracking-tight">Modifier la recette</h1>
+        <h1 className="text-3xl font-bold tracking-tight">Modifier la recette</h1>
       </div>
 
       <RecipeForm

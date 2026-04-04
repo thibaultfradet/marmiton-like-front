@@ -30,7 +30,7 @@ export default function MyRecipesPage() {
     <div className="space-y-6">
       <div className="flex items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight flex items-center gap-2">
+          <h1 className="text-3xl font-bold tracking-tight flex items-center gap-2">
             <BookOpen className="h-5 w-5 text-primary" />
             Mes recettes
           </h1>
