@@ -1,2 +1,6 @@
-// App.tsx is intentionally empty — routing is handled by src/router/index.tsx
-export {};
+import { RouterProvider } from 'react-router-dom';
+import router from '@/router';
+
+export default function App() {
+  return <RouterProvider router={router} />;
+}

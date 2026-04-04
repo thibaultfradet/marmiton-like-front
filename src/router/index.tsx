@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import ProtectedRoute from '@/components/ProtectedRoute';
+import { AuthGuard, AdminGuard } from './guards';
 import AppLayout from '@/components/Layout/AppLayout';
 import LoginPage from '@/pages/LoginPage';
 import HomePage from '@/pages/HomePage';
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     element: <LoginPage />,
   },
   {
-    element: <ProtectedRoute />,
+    element: <AuthGuard />,
     children: [
       {
         element: <AppLayout />,
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
     ],
   },
   {
-    element: <ProtectedRoute requireAdmin />,
+    element: <AdminGuard />,
     children: [
       {
         element: <AppLayout />,
