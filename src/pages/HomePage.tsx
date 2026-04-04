@@ -41,22 +41,21 @@ export default function HomePage() {
   // Fetch page 1 when filters change
   useEffect(() => {
     let cancelled = false;
-    setLoading(true);
-    setRecipes([]);
-    setPage(1);
-    setHasMore(true);
 
     getRecipes({ q: debouncedQ, category: filters.category, tag: filters.tag, page: 1, limit: LIMIT })
       .then((res) => {
-        if (cancelled || !res.success || !res.data) return;
+        if (cancelled) return;
+        if (!res.success || !res.data) {
+          setLoading(false);
+          return;
+        }
         setRecipes(res.data.recipes);
         setCategories(res.data.categories);
         setTags(res.data.tags);
         setTotal(res.data.total);
         setHasMore(res.data.hasMore);
-      })
-      .finally(() => {
-        if (!cancelled) setLoading(false);
+        setPage(1);
+        setLoading(false);
       });
 
     return () => { cancelled = true; };
