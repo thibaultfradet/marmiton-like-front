@@ -107,7 +107,7 @@ export default function RecipeForm({
       </div>
 
       {/* Temps + quantité */}
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="space-y-1.5">
           <Label htmlFor="prepTime">Préparation (min)</Label>
           <Input

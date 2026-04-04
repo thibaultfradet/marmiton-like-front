@@ -95,45 +95,47 @@ export default function RecipeDetailPage() {
       )}
 
       {/* Header */}
-      <div className="flex items-start justify-between gap-4">
-        <div className="space-y-2 flex-1">
-          <div className="flex flex-wrap gap-2 items-center">
-            {recipe.category && (
-              <span className="inline-flex items-center rounded-full bg-accent px-2.5 py-0.5 text-xs font-medium text-accent-foreground">
-                {recipe.category.label}
-              </span>
-            )}
-            {recipe.tags.map((t) => (
-              <span key={t.id} className="inline-flex items-center rounded-full bg-muted px-2.5 py-0.5 text-xs text-muted-foreground">
-                {t.label}
-              </span>
-            ))}
-          </div>
-          <h1 className="text-3xl font-bold tracking-tight">{recipe.label}</h1>
-          {recipe.description && (
-            <p className="text-muted-foreground text-base leading-relaxed">{recipe.description}</p>
+      <div className="space-y-3">
+        <div className="flex flex-wrap gap-2 items-center">
+          {recipe.category && (
+            <span className="inline-flex items-center rounded-full bg-accent px-2.5 py-0.5 text-xs font-medium text-accent-foreground">
+              {recipe.category.label}
+            </span>
           )}
+          {recipe.tags.map((t) => (
+            <span key={t.id} className="inline-flex items-center rounded-full bg-muted px-2.5 py-0.5 text-xs text-muted-foreground">
+              {t.label}
+            </span>
+          ))}
         </div>
 
-        <div className="flex items-center gap-2 shrink-0">
-          {isAuthor && (
-            <Button variant="outline" size="sm" asChild>
-              <Link to={`/recipes/${recipe.id}/edit`} className="gap-1.5">
-                <Pencil className="h-3.5 w-3.5" />
-                Modifier
-              </Link>
+        <div className="flex items-start justify-between gap-3">
+          <h1 className="text-3xl font-bold tracking-tight flex-1">{recipe.label}</h1>
+          <div className="flex items-center gap-2 shrink-0 pt-0.5">
+            {isAuthor && (
+              <Button variant="outline" size="sm" asChild>
+                <Link to={`/recipes/${recipe.id}/edit`} className="gap-1.5">
+                  <Pencil className="h-3.5 w-3.5" />
+                  <span className="hidden sm:inline">Modifier</span>
+                </Link>
+              </Button>
+            )}
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={handleFavorite}
+              disabled={favPending}
+              className="h-9 w-9 shrink-0"
+              aria-label={recipe.isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'}
+            >
+              <Heart className={`h-4 w-4 transition-colors ${recipe.isFavorite ? 'fill-red-500 text-red-500' : ''}`} />
             </Button>
-          )}
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={handleFavorite}
-            disabled={favPending}
-            className="h-9 w-9"
-          >
-            <Heart className={`h-4 w-4 transition-colors ${recipe.isFavorite ? 'fill-red-500 text-red-500' : ''}`} />
-          </Button>
+          </div>
         </div>
+
+        {recipe.description && (
+          <p className="text-muted-foreground text-base leading-relaxed">{recipe.description}</p>
+        )}
       </div>
 
       {/* Meta + rating */}

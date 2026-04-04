@@ -63,7 +63,7 @@ export default function HomePage() {
         <Button asChild size="sm">
           <Link to="/recipes/new" className="gap-1.5">
             <Plus className="h-4 w-4" />
-            Nouvelle recette
+            <span className="hidden sm:inline">Nouvelle recette</span>
           </Link>
         </Button>
       </div>

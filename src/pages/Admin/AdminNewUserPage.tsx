@@ -48,7 +48,7 @@ export default function AdminNewUserPage() {
       <Card className="border-border/60">
         <CardContent className="pt-6">
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
                 <Label htmlFor="firstName">Prénom <span className="text-destructive">*</span></Label>
                 <Input id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
