@@ -2,6 +2,8 @@ import { createBrowserRouter } from 'react-router-dom';
 import { AuthGuard, AdminGuard } from './guards';
 import AppLayout from '@/components/Layout/AppLayout';
 import LoginPage from '@/pages/LoginPage';
+import ForgotPasswordPage from '@/pages/ForgotPasswordPage';
+import ResetPasswordPage from '@/pages/ResetPasswordPage';
 import HomePage from '@/pages/HomePage';
 import RecipeDetailPage from '@/pages/RecipeDetailPage';
 import NewRecipePage from '@/pages/NewRecipePage';
@@ -16,6 +18,14 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <LoginPage />,
+  },
+  {
+    path: '/forgot-password',
+    element: <ForgotPasswordPage />,
+  },
+  {
+    path: '/reset-password',
+    element: <ResetPasswordPage />,
   },
   {
     element: <AuthGuard />,

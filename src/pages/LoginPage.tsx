@@ -1,12 +1,12 @@
 import { useState, type FormEvent } from 'react';
-import { useNavigate, Navigate } from 'react-router-dom';
+import { useNavigate, Navigate, Link } from 'react-router-dom';
 import { ChefHat, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { useAuth } from '@/context/AuthContext';
+import { useAuth } from '@/context/useAuth';
 
 export default function LoginPage() {
   const { login, isAuthenticated, isLoading } = useAuth();
@@ -87,6 +87,12 @@ export default function LoginPage() {
                 {submitting && <Loader2 className="h-4 w-4 mr-2 animate-spin" />}
                 Se connecter
               </Button>
+
+              <div className="text-center">
+                <Link to="/forgot-password" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                  Mot de passe oublié ?
+                </Link>
+              </div>
             </form>
           </CardContent>
         </Card>
