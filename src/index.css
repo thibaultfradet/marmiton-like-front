@@ -1,13 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;400;500;600;700&family=Playfair+Display+SC:wght@400;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "@fontsource-variable/inter";
-
-@custom-variant dark (&:is(.dark *));
 
 @theme inline {
-    --font-heading: var(--font-sans);
-    --font-sans: 'Inter Variable', sans-serif;
+    --font-heading: 'Playfair Display SC', serif;
+    --font-sans: 'Karla', sans-serif;
     --color-sidebar-ring: var(--sidebar-ring);
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -49,82 +47,53 @@
 }
 
 :root {
-    --background: oklch(0.99 0.003 60);
-    --foreground: oklch(0.18 0.02 55);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.18 0.02 55);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.18 0.02 55);
-    --primary: oklch(0.62 0.18 42);
-    --primary-foreground: oklch(0.99 0 0);
-    --secondary: oklch(0.96 0.01 60);
-    --secondary-foreground: oklch(0.3 0.02 55);
-    --muted: oklch(0.96 0.008 60);
-    --muted-foreground: oklch(0.52 0.03 55);
-    --accent: oklch(0.94 0.04 70);
-    --accent-foreground: oklch(0.3 0.05 50);
-    --destructive: oklch(0.577 0.245 27.325);
-    --border: oklch(0.9 0.01 60);
-    --input: oklch(0.92 0.01 60);
-    --ring: oklch(0.62 0.18 42 / 40%);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
+    --background: #FFFBEB;
+    --foreground: #0F172A;
+    --card: #FFFFFF;
+    --card-foreground: #0F172A;
+    --popover: #FFFFFF;
+    --popover-foreground: #0F172A;
+    --primary: #9A3412;
+    --primary-foreground: #FFFFFF;
+    --secondary: #F8F2F0;
+    --secondary-foreground: #3D1A0E;
+    --muted: #F8F2F0;
+    --muted-foreground: #64748B;
+    --accent: #FEF3C7;
+    --accent-foreground: #92400E;
+    --destructive: #DC2626;
+    --destructive-foreground: #FFFFFF;
+    --border: #F2E6E2;
+    --input: #F2E6E2;
+    --ring: #9A341266;
+    --chart-1: #9A3412;
+    --chart-2: #C2410C;
+    --chart-3: #059669;
+    --chart-4: #D97706;
+    --chart-5: #64748B;
     --radius: 0.625rem;
-    --sidebar: oklch(0.985 0 0);
-    --sidebar-foreground: oklch(0.145 0 0);
-    --sidebar-primary: oklch(0.205 0 0);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.97 0 0);
-    --sidebar-accent-foreground: oklch(0.205 0 0);
-    --sidebar-border: oklch(0.922 0 0);
-    --sidebar-ring: oklch(0.708 0 0);
-}
-
-.dark {
-    --background: oklch(0.14 0.01 50);
-    --foreground: oklch(0.96 0.005 60);
-    --card: oklch(0.19 0.01 50);
-    --card-foreground: oklch(0.96 0.005 60);
-    --popover: oklch(0.19 0.01 50);
-    --popover-foreground: oklch(0.96 0.005 60);
-    --primary: oklch(0.7 0.18 42);
-    --primary-foreground: oklch(0.12 0 0);
-    --secondary: oklch(0.26 0.01 50);
-    --secondary-foreground: oklch(0.96 0.005 60);
-    --muted: oklch(0.24 0.01 50);
-    --muted-foreground: oklch(0.65 0.02 55);
-    --accent: oklch(0.28 0.03 50);
-    --accent-foreground: oklch(0.96 0.005 60);
-    --destructive: oklch(0.704 0.191 22.216);
-    --border: oklch(1 0 0 / 10%);
-    --input: oklch(1 0 0 / 14%);
-    --ring: oklch(0.7 0.18 42 / 40%);
-    --chart-1: oklch(0.87 0 0);
-    --chart-2: oklch(0.556 0 0);
-    --chart-3: oklch(0.439 0 0);
-    --chart-4: oklch(0.371 0 0);
-    --chart-5: oklch(0.269 0 0);
-    --sidebar: oklch(0.205 0 0);
-    --sidebar-foreground: oklch(0.985 0 0);
-    --sidebar-primary: oklch(0.488 0.243 264.376);
-    --sidebar-primary-foreground: oklch(0.985 0 0);
-    --sidebar-accent: oklch(0.269 0 0);
-    --sidebar-accent-foreground: oklch(0.985 0 0);
-    --sidebar-border: oklch(1 0 0 / 10%);
-    --sidebar-ring: oklch(0.556 0 0);
+    --sidebar: #FFF7ED;
+    --sidebar-foreground: #0F172A;
+    --sidebar-primary: #9A3412;
+    --sidebar-primary-foreground: #FFFFFF;
+    --sidebar-accent: #F8F2F0;
+    --sidebar-accent-foreground: #3D1A0E;
+    --sidebar-border: #F2E6E2;
+    --sidebar-ring: #9A341266;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
-    }
+  }
   body {
     @apply bg-background text-foreground;
-    }
+    font-family: 'Karla', sans-serif;
+  }
   html {
     @apply font-sans;
-    }
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display SC', serif;
+  }
 }
