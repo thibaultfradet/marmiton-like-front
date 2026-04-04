@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react';
+import { useState } from 'react';
 import { useNavigate, Navigate, Link } from 'react-router-dom';
 import { ChefHat, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
@@ -19,7 +19,7 @@ export default function LoginPage() {
     return <Navigate to="/" replace />;
   }
 
-  const handleSubmit = async (e: FormEvent) => {
+  const handleSubmit = async (e: { preventDefault(): void }) => {
     e.preventDefault();
     setSubmitting(true);
     try {

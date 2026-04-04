@@ -39,7 +39,7 @@ export default function AdminEditUserPage() {
     }).finally(() => setLoading(false));
   }, [id, navigate]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: { preventDefault(): void }) => {
     e.preventDefault();
     if (!user) return;
     setSaving(true);

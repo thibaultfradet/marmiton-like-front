@@ -47,7 +47,7 @@ export default function RecipeForm({
     );
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: { preventDefault(): void }) => {
     e.preventDefault();
     await onSubmit(
       {
