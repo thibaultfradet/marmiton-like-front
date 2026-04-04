@@ -6,6 +6,8 @@ interface RecipeFilters {
   category?: string;
   tag?: string;
   q?: string;
+  page?: number;
+  limit?: number;
 }
 
 interface RatingResult {
@@ -39,6 +41,8 @@ export async function getRecipes(filters?: RecipeFilters): Promise<ApiResponse<R
   if (filters?.category) params.set('category', filters.category);
   if (filters?.tag)      params.set('tag',      filters.tag);
   if (filters?.q)        params.set('q',        filters.q);
+  if (filters?.page)     params.set('page',     String(filters.page));
+  if (filters?.limit)    params.set('limit',    String(filters.limit));
   const qs = params.toString();
   const res = await fetchWithRefresh(`/api/recipes${qs ? '?' + qs : ''}`);
   return res.json();

@@ -39,6 +39,10 @@ export interface RecipeListData {
   recipes: Recipe[];
   categories: Category[];
   tags: Tag[];
+  total: number;
+  page: number;
+  limit: number;
+  hasMore: boolean;
 }
 
 export interface SearchResult {
