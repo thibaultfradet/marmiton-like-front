@@ -4,6 +4,8 @@ import { Pencil, Loader2 } from 'lucide-react';
 import { toast } from 'sonner';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
+import UserAvatar from './UserAvatar';
+import UserRoleBadge from './UserRoleBadge';
 import type { AdminUser } from '@/types/custom/user';
 import { toggleDisable } from '@/services/adminApi';
 
@@ -38,66 +40,93 @@ export default function UserTable({ users, onUserChange }: UserTableProps) {
   }
 
   return (
-    <div className="overflow-x-auto rounded-xl border border-border/60">
-      <table className="w-full text-sm">
-        <thead>
-          <tr className="border-b border-border/60 bg-muted/50">
-            <th className="px-4 py-3 text-left font-medium text-muted-foreground">Utilisateur</th>
-            <th className="px-4 py-3 text-left font-medium text-muted-foreground">Email</th>
-            <th className="px-4 py-3 text-left font-medium text-muted-foreground">Rôle</th>
-            <th className="px-4 py-3 text-center font-medium text-muted-foreground">Actif</th>
-            <th className="px-4 py-3 text-right font-medium text-muted-foreground">Actions</th>
-          </tr>
-        </thead>
-        <tbody className="divide-y divide-border/40">
-          {users.map((user) => (
-            <tr key={user.id} className="hover:bg-muted/30 transition-colors">
-              <td className="px-4 py-3">
-                <div className="flex items-center gap-3">
-                  <div className="flex items-center justify-center h-8 w-8 rounded-full bg-primary/10 text-primary text-xs font-semibold shrink-0">
-                    {user.firstName[0]}{user.lastName[0]}
-                  </div>
-                  <div>
+    <>
+      {/* Mobile — card list */}
+      <div className="sm:hidden space-y-3">
+        {users.map((user) => (
+          <div key={user.id} className="rounded-xl border border-border/60 bg-card p-4 space-y-3">
+            <div className="flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3 min-w-0">
+                <UserAvatar user={user} />
+                <div className="min-w-0">
+                  <p className="font-medium text-sm truncate">{user.firstName} {user.lastName}</p>
+                  <p className="text-xs text-muted-foreground truncate">{user.email}</p>
+                </div>
+              </div>
+              <Button variant="ghost" size="icon" asChild className="h-8 w-8 shrink-0">
+                <Link to={`/admin/users/${user.id}/edit`} aria-label="Modifier">
+                  <Pencil className="h-3.5 w-3.5" />
+                </Link>
+              </Button>
+            </div>
+
+            <div className="flex items-center justify-between">
+              <UserRoleBadge user={user} />
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <span>{user.disabledAt === null ? 'Actif' : 'Désactivé'}</span>
+                {pendingId === user.id ? (
+                  <Loader2 className="h-4 w-4 animate-spin" />
+                ) : (
+                  <Switch
+                    checked={user.disabledAt === null}
+                    onCheckedChange={() => handleToggle(user)}
+                    aria-label={user.disabledAt ? 'Réactiver' : 'Désactiver'}
+                  />
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Desktop — table */}
+      <div className="hidden sm:block overflow-x-auto rounded-xl border border-border/60">
+        <table className="w-full text-sm">
+          <thead>
+            <tr className="border-b border-border/60 bg-muted/50">
+              <th className="px-4 py-3 text-left font-medium text-muted-foreground">Utilisateur</th>
+              <th className="px-4 py-3 text-left font-medium text-muted-foreground">Email</th>
+              <th className="px-4 py-3 text-left font-medium text-muted-foreground">Rôle</th>
+              <th className="px-4 py-3 text-center font-medium text-muted-foreground">Actif</th>
+              <th className="px-4 py-3 text-right font-medium text-muted-foreground">Actions</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-border/40">
+            {users.map((user) => (
+              <tr key={user.id} className="hover:bg-muted/30 transition-colors">
+                <td className="px-4 py-3">
+                  <div className="flex items-center gap-3">
+                    <UserAvatar user={user} />
                     <p className="font-medium">{user.firstName} {user.lastName}</p>
                   </div>
-                </div>
-              </td>
-              <td className="px-4 py-3 text-muted-foreground">{user.email}</td>
-              <td className="px-4 py-3">
-                {user.roles.includes('ROLE_ADMIN') ? (
-                  <span className="inline-flex items-center rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
-                    Admin
-                  </span>
-                ) : (
-                  <span className="inline-flex items-center rounded-full bg-muted px-2.5 py-0.5 text-xs font-medium text-muted-foreground">
-                    Utilisateur
-                  </span>
-                )}
-              </td>
-              <td className="px-4 py-3">
-                <div className="flex justify-center">
-                  {pendingId === user.id ? (
-                    <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
-                  ) : (
-                    <Switch
-                      checked={user.disabledAt === null}
-                      onCheckedChange={() => handleToggle(user)}
-                      aria-label={user.disabledAt ? 'Réactiver' : 'Désactiver'}
-                    />
-                  )}
-                </div>
-              </td>
-              <td className="px-4 py-3 text-right">
-                <Button variant="ghost" size="icon" asChild className="h-8 w-8">
-                  <Link to={`/admin/users/${user.id}/edit`} aria-label="Modifier">
-                    <Pencil className="h-3.5 w-3.5" />
-                  </Link>
-                </Button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+                </td>
+                <td className="px-4 py-3 text-muted-foreground">{user.email}</td>
+                <td className="px-4 py-3"><UserRoleBadge user={user} /></td>
+                <td className="px-4 py-3">
+                  <div className="flex justify-center">
+                    {pendingId === user.id ? (
+                      <Loader2 className="h-4 w-4 animate-spin text-muted-foreground" />
+                    ) : (
+                      <Switch
+                        checked={user.disabledAt === null}
+                        onCheckedChange={() => handleToggle(user)}
+                        aria-label={user.disabledAt ? 'Réactiver' : 'Désactiver'}
+                      />
+                    )}
+                  </div>
+                </td>
+                <td className="px-4 py-3 text-right">
+                  <Button variant="ghost" size="icon" asChild className="h-8 w-8">
+                    <Link to={`/admin/users/${user.id}/edit`} aria-label="Modifier">
+                      <Pencil className="h-3.5 w-3.5" />
+                    </Link>
+                  </Button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }
