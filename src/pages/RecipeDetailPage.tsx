@@ -9,7 +9,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import StarRating from '@/components/Recipe/StarRating';
 import type { Recipe } from '@/types/custom/recipe';
 import { getRecipe, toggleFavorite, rateRecipe } from '@/services/recipeApi';
-import { useAuth } from '@/context/AuthContext';
+import { useAuth } from '@/context/useAuth';
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8000';
 

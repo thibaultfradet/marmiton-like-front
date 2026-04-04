@@ -21,7 +21,6 @@ export default function HomePage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
     getRecipes().then((res) => {
       if (res.success && res.data) {
         setRecipes(res.data.recipes);

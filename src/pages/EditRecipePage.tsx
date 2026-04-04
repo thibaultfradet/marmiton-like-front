@@ -8,7 +8,7 @@ import type { Category, Tag, Recipe } from '@/types/custom/recipe';
 import { getRecipe, updateRecipe, uploadPhoto, deletePhoto, type RecipePayload } from '@/services/recipeApi';
 import { getCategories } from '@/services/categoryApi';
 import { getTags } from '@/services/tagApi';
-import { useAuth } from '@/context/AuthContext';
+import { useAuth } from '@/context/useAuth';
 
 export default function EditRecipePage() {
   const { id } = useParams<{ id: string }>();
