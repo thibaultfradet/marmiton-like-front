@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { ReactNode } from 'react';
 import type { AuthUser } from '@/types/custom/user';
-import { AuthContext } from './authContext';
+import { AuthContext } from './auth-context';
 import fetchWithRefresh from '@/utils/fetchWithRefresh';
 
 export function AuthProvider({ children }: { children: ReactNode }) {
