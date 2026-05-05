@@ -7,9 +7,9 @@ export default function ErrorPage() {
 
   const message = isRouteErrorResponse(error)
     ? error.status === 404
-      ? 'Cette page n'existe pas.'
+      ? "Cette page n'existe pas."
       : `Erreur ${error.status} — ${error.statusText}`
-    : 'Une erreur inattendue s'est produite.';
+    : "Une erreur inattendue s'est produite.";
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center gap-6 p-6 text-center">
