@@ -81,6 +81,11 @@ export default function Navbar() {
             </div>
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
+              <Link to="/profile" className="flex items-center gap-2 cursor-pointer">
+                <User className="h-4 w-4" /> Mon profil
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
               <Link to="/my-recipes" className="flex items-center gap-2 cursor-pointer">
                 <BookOpen className="h-4 w-4" /> Mes recettes
               </Link>

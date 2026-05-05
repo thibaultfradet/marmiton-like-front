@@ -38,3 +38,32 @@ export async function resetPassword(token: string, password: string): Promise<Ap
   });
   return res.json();
 }
+
+export interface UpdateProfilePayload {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
+export interface UpdatePasswordPayload {
+  password: string;
+  confirmPassword: string;
+}
+
+export async function updateProfile(data: UpdateProfilePayload): Promise<ApiResponse<AuthUser>> {
+  const res = await fetchWithRefresh('/api/profile', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  return res.json();
+}
+
+export async function updatePassword(data: UpdatePasswordPayload): Promise<ApiResponse<null>> {
+  const res = await fetchWithRefresh('/api/profile/password', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  return res.json();
+}

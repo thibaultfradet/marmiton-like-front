@@ -10,6 +10,7 @@ import NewRecipePage from '@/pages/NewRecipePage';
 import EditRecipePage from '@/pages/EditRecipePage';
 import FavoritesPage from '@/pages/FavoritesPage';
 import MyRecipesPage from '@/pages/MyRecipesPage';
+import ProfilePage from '@/pages/ProfilePage';
 import AdminUsersPage from '@/pages/Admin/AdminUsersPage';
 import AdminNewUserPage from '@/pages/Admin/AdminNewUserPage';
 import AdminEditUserPage from '@/pages/Admin/AdminEditUserPage';
@@ -43,6 +44,7 @@ const router = createBrowserRouter([
               { path: '/recipes/:id/edit',       element: <EditRecipePage /> },
               { path: '/favorites',              element: <FavoritesPage /> },
               { path: '/my-recipes',             element: <MyRecipesPage /> },
+              { path: '/profile',                element: <ProfilePage /> },
             ],
           },
         ],
