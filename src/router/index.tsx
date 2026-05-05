@@ -13,45 +13,51 @@ import MyRecipesPage from '@/pages/MyRecipesPage';
 import AdminUsersPage from '@/pages/Admin/AdminUsersPage';
 import AdminNewUserPage from '@/pages/Admin/AdminNewUserPage';
 import AdminEditUserPage from '@/pages/Admin/AdminEditUserPage';
+import ErrorPage from '@/pages/ErrorPage';
 
 const router = createBrowserRouter([
   {
-    path: '/login',
-    element: <LoginPage />,
-  },
-  {
-    path: '/forgot-password',
-    element: <ForgotPasswordPage />,
-  },
-  {
-    path: '/reset-password',
-    element: <ResetPasswordPage />,
-  },
-  {
-    element: <AuthGuard />,
+    errorElement: <ErrorPage />,
     children: [
       {
-        element: <AppLayout />,
+        path: '/login',
+        element: <LoginPage />,
+      },
+      {
+        path: '/forgot-password',
+        element: <ForgotPasswordPage />,
+      },
+      {
+        path: '/reset-password',
+        element: <ResetPasswordPage />,
+      },
+      {
+        element: <AuthGuard />,
         children: [
-          { path: '/',                       element: <HomePage /> },
-          { path: '/recipes/:id',            element: <RecipeDetailPage /> },
-          { path: '/recipes/new',            element: <NewRecipePage /> },
-          { path: '/recipes/:id/edit',       element: <EditRecipePage /> },
-          { path: '/favorites',              element: <FavoritesPage /> },
-          { path: '/my-recipes',             element: <MyRecipesPage /> },
+          {
+            element: <AppLayout />,
+            children: [
+              { path: '/',                       element: <HomePage /> },
+              { path: '/recipes/:id',            element: <RecipeDetailPage /> },
+              { path: '/recipes/new',            element: <NewRecipePage /> },
+              { path: '/recipes/:id/edit',       element: <EditRecipePage /> },
+              { path: '/favorites',              element: <FavoritesPage /> },
+              { path: '/my-recipes',             element: <MyRecipesPage /> },
+            ],
+          },
         ],
       },
-    ],
-  },
-  {
-    element: <AdminGuard />,
-    children: [
       {
-        element: <AppLayout />,
+        element: <AdminGuard />,
         children: [
-          { path: '/admin/users',            element: <AdminUsersPage /> },
-          { path: '/admin/users/new',        element: <AdminNewUserPage /> },
-          { path: '/admin/users/:id/edit',   element: <AdminEditUserPage /> },
+          {
+            element: <AppLayout />,
+            children: [
+              { path: '/admin/users',            element: <AdminUsersPage /> },
+              { path: '/admin/users/new',        element: <AdminNewUserPage /> },
+              { path: '/admin/users/:id/edit',   element: <AdminEditUserPage /> },
+            ],
+          },
         ],
       },
     ],
